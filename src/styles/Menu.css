@@ -1,0 +1,55 @@
+.menu-modal {
+  position: absolute;
+  width: 100vw;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--section);
+  animation: fadeIn 0.3s forwards;
+
+  & .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    transition: 0.5 ease-in;
+    color: var(--text-1);
+  }
+
+  & img {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+  }
+
+  & h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  & ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
