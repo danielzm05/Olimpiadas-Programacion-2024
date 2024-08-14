@@ -1,0 +1,90 @@
+.home-section {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.home-page .home-section:nth-child(1) {
+  display: grid;
+  place-content: center;
+  background: var(--section);
+
+  & h1 {
+    font-size: clamp(1rem, 14vw, 8rem);
+    font-family: "Josefin Sans", sans-serif;
+    color: var(--text-1);
+    font-weight: 500;
+  }
+}
+
+.home-page .home-section:nth-child(2) {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 30px;
+  padding: 40px 70px;
+
+  & h2 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+  & .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 80px;
+    height: 100%;
+
+    & .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      height: 100%;
+      background: var(--section);
+      color: var(--text-1);
+
+      & img {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        width: 100%;
+      }
+
+      & section {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 30px 15px;
+      }
+
+      & h3 {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+.home-page .home-section:nth-child(3) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px;
+  gap: 40px;
+  background: var(--section);
+
+  & h2 {
+    flex: 1;
+    font-size: 5rem;
+    color: var(--text-1);
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  & article {
+    flex: 2;
+    background-color: var(--background);
+    border-radius: 20px;
+    padding: 30px;
+    font-size: 2rem;
+  }
+}

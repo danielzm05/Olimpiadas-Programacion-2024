@@ -1,0 +1,32 @@
+.main-header {
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2vh;
+  padding: 0 20px;
+  min-height: 10vh;
+  color: var(--text-1);
+  background: var(--section);
+}
+
+.main-header ul {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+
+  & li {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 3vh;
+  }
+
+  & li:hover {
+    color: #808080;
+    transition: 0.3s ease-in;
+    cursor: pointer;
+  }
+}
