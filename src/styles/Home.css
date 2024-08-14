@@ -21,12 +21,13 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  gap: 30px;
+  gap: 40px;
   padding: 40px 70px;
 
   & h2 {
     font-size: 3rem;
     font-weight: 400;
+    color: var(--text-3);
   }
 
   & .cards-container {
