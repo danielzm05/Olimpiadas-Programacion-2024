@@ -1,6 +1,7 @@
 import { IconUser } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
 import { IconMenu2 } from "@tabler/icons-react";
+import logo from "../img/logo.png";
 import "../styles/Header.css";
 
 export function Header() {
@@ -12,7 +13,8 @@ export function Header() {
           Menu
         </li>
       </ul>
-      <h1>LOGO</h1>
+      <img className="logo" src={logo} alt="Logo" />
+
       <ul>
         <li>
           <IconUser size={30} />
