@@ -16,5 +16,22 @@ export const ProductsProvider = ({ children }) => {
     console.log(data);
     setProducts(data);
   };
-  return <ProductsContext.Provider value={{ products, getProducts }}>{children}</ProductsContext.Provider>;
+
+  const createProduct = async (newProduct) => {
+    const { error } = await supabase.from("Producto").insert([
+      {
+        id_producto: newProduct.id_producto,
+        nombre: newProduct.nombre,
+        precio: newProduct.precio,
+        imagen: newProduct.imagen,
+        stock: newProduct.stock,
+        descripcion: newProduct.descripcion,
+      },
+    ]);
+
+    if (error) throw error;
+    getProducts();
+  };
+
+  return <ProductsContext.Provider value={{ products, getProducts, createProduct }}>{children}</ProductsContext.Provider>;
 };

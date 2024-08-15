@@ -1,4 +1,5 @@
 import { IconPlus } from "@tabler/icons-react";
+import "../styles/ProductCard.css";
 
 export function ProductCard({ name, description, price, img, addToCart }) {
   return (
