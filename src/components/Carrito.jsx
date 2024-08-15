@@ -1,8 +1,12 @@
 import { IconX } from "@tabler/icons-react";
 import { IconTrash } from "@tabler/icons-react";
+import { IconMoodSad } from "@tabler/icons-react";
+import { useCarritoContext } from "../context/CarritoContext";
 import "../styles/Carrito.css";
 
 export function Carrito({ isClose }) {
+  const { carrito, removeProduct, increaseQuantity, decreaseQuantity } = useCarritoContext();
+
   return (
     <div className="overlay">
       <section className="carrito">
@@ -10,18 +14,31 @@ export function Carrito({ isClose }) {
           <IconX size={15} />
         </button>
         <h2>Cart</h2>
-        <CartProduct
-          name={"Guitarra"}
-          description={"weofnwnefiweif"}
-          price={20000}
-          img={"https://allmusic-arg.netlify.app/assets/img/guitarra_takamine_acus.png"}
-        />
+        {carrito.length !== 0 ? (
+          carrito.map((product) => (
+            <CartProduct
+              key={product.id_producto}
+              name={product.nombre}
+              description={product.descripcion}
+              price={product.precio * product.cantidad}
+              cantidad={product.cantidad}
+              img={product.imagen}
+              remove={() => removeProduct(product.id_producto)}
+              increase={() => increaseQuantity(product.id_producto)}
+              decrease={() => decreaseQuantity(product.id_producto)}
+            />
+          ))
+        ) : (
+          <p className="empty-message">
+            Tu carrito esta vacío <br /> <IconMoodSad size={20} />
+          </p>
+        )}
       </section>
     </div>
   );
 }
 
-function CartProduct({ name, description, price, img }) {
+function CartProduct({ name, description, cantidad, price, img, remove, increase, decrease }) {
   return (
     <article className="cart-product">
       <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
@@ -34,12 +51,14 @@ function CartProduct({ name, description, price, img }) {
 
         <footer>
           <div className="quantity">
-            <button>-</button>
-            <span>1</span>
-            <button>+</button>
+            <button onClick={decrease}>-</button>
+            <span>{cantidad}</span>
+            <button onClick={increase}>+</button>
           </div>
 
-          <IconTrash size={15} />
+          <button className="remove-btn" onClick={remove}>
+            <IconTrash size={15} />
+          </button>
         </footer>
       </section>
     </article>

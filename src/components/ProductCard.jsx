@@ -1,7 +1,6 @@
 import { IconPlus } from "@tabler/icons-react";
 
-
-export function ProductCard({ name, description, price, img }) {
+export function ProductCard({ name, description, price, img, addToCart }) {
   return (
     <article className="product-card">
       <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
@@ -11,7 +10,7 @@ export function ProductCard({ name, description, price, img }) {
       </section>
       <footer>
         <p className="product-price">${price}</p>
-        <button className="btn-add">
+        <button className="btn-add" onClick={addToCart}>
           <IconPlus size={18} />
           Agregar
         </button>

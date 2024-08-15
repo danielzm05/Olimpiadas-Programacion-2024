@@ -11,25 +11,27 @@ export const CarritoProvider = ({ children }) => {
 
   const addProduct = (newProduct) => {
     setCarrito((prevCarrito) => {
-      if (prevCarrito.find((item) => item.id === newProduct.id)) {
-        return prevCarrito.map((item) => (item.id === newProduct.id ? { ...item, cantidad: item.cantidad + 1 } : item));
+      if (prevCarrito.find((item) => item.id_producto === newProduct.id_producto)) {
+        return prevCarrito.map((item) => (item.id_producto === newProduct.id_producto ? { ...item, cantidad: item.cantidad + 1 } : item));
       } else {
         return [...prevCarrito, { ...newProduct, cantidad: 1 }];
       }
     });
+    console.log(carrito);
   };
 
   const removeProduct = (id) => {
-    setCarrito((prevCarrito) => prevCarrito.filter((product) => product.id !== id));
+    setCarrito((prevCarrito) => prevCarrito.filter((product) => product.id_producto !== id));
   };
 
   const increaseQuantity = (id) => {
-    setCarrito((prevCarrito) => prevCarrito.map((item) => (item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item)));
+    setCarrito((prevCarrito) => prevCarrito.map((item) => (item.id_producto === id ? { ...item, cantidad: item.cantidad + 1 } : item)));
   };
 
   const decreaseQuantity = (id) => {
-    setCarrito((prevCarrito) => prevCarrito.map((item) => (item.id === id ? { ...item, cantidad: Math.max(item.cantidad - 1, 1) } : item)));
+    setCarrito((prevCarrito) => prevCarrito.map((item) => (item.id_producto === id ? { ...item, cantidad: Math.max(item.cantidad - 1, 1) } : item)));
   };
+
   return (
     <CarritoContext.Provider
       value={{
