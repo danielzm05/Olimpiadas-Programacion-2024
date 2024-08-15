@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap");
 :root {
   --background: #ffffff;
-  --section: #000000;
+  --section: #070707;
   --text-1: #ffffff;
   --text-2: #9b9b9b;
   --text-3: #212529;
-  --hover: #b8b8b8;
+  --border: #b8b8b8;
+  --alert: #d00000;
 
   --font-sz: clamp();
 }
@@ -15,4 +16,8 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Quicksand, sans-serif;
+}
+
+main {
+  min-height: 100vh;
 }
