@@ -12,22 +12,27 @@ export function Header() {
   const [openCart, setOpenCart] = useState(false);
   return (
     <header className="main-header">
-      <ul>
-        <li onClick={() => setOpenMenu(true)}>
-          <IconMenu2 size={30} />
-          Menu
-        </li>
-      </ul>
-      <img className="logo" src={logo} alt="Logo" />
+      <a href="#" onClick={() => setOpenMenu(true)}>
+        <IconMenu2 size={30} />
+      </a>
+      <a href="/">
+        <img className="logo" src={logo} alt="Logo" />
+      </a>
 
-      <ul>
-        <li>
-          <IconUser size={30} />
-        </li>
-        <li onClick={() => setOpenCart(true)}>
-          <IconShoppingBag size={30} />
-        </li>
-      </ul>
+      <nav>
+        <ul>
+          <li>
+            <a href="/login">
+              <IconUser size={30} />
+            </a>
+          </li>
+          <li onClick={() => setOpenCart(true)}>
+            <a href="#">
+              <IconShoppingBag size={30} />
+            </a>
+          </li>
+        </ul>
+      </nav>
 
       {openCart && <Carrito isClose={() => setOpenCart(false)} />}
       {openMenu && <Menu isClose={() => setOpenMenu(false)} />}

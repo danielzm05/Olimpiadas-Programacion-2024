@@ -10,11 +10,23 @@ export function Menu({ isClose }) {
         <IconX size={25} />
       </button>
       <h1>MENU</h1>
-      <ul>
-        <li>INICIO</li>
-        <li>SHOP</li>
-        <li>SOBRE NOSOTROS</li>
-      </ul>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/">INICIO</a>
+          </li>
+          <li>
+            <a href="/productos">SHOP</a>
+          </li>
+          <li>
+            <a href="/login">INICIAR SESIÓN</a>
+          </li>
+          <li>
+            <a href="/nosotros">SOBRE NOSOTROS</a>
+          </li>
+        </ul>
+      </nav>
     </section>
   );
 }

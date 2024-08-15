@@ -21,17 +21,16 @@
   align-items: center;
   gap: 15px;
   list-style: none;
+}
 
-  & li {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    font-size: 3vh;
-  }
+& a {
+  font-size: 3vh;
+  text-decoration: none;
+  color: var(--text-1);
+}
 
-  & li:hover {
-    color: #808080;
-    transition: 0.3s ease-in;
-    cursor: pointer;
-  }
+& a:hover {
+  color: var(--hover);
+  transition: 0.3s ease-in;
+  cursor: pointer;
 }
