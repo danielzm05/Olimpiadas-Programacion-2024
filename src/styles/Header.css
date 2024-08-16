@@ -13,17 +13,20 @@
   background: transparent;
 }
 
-.main-header .burguer-container {
+.main-header .burger-container {
   display: flex;
   flex-grow: 1;
   flex-basis: 0;
+
+  & svg {
+    cursor: pointer;
+  }
 }
 
 .main-header .logo {
-  & img {
-    width: 80px;
-    height: 80px;
-  }
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
 }
 
 .main-header nav {
