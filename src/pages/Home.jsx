@@ -47,8 +47,11 @@ export function Home() {
         <h2>¿Quiénes Somos?</h2>
         <article>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, aut odio deleniti molestiae, id sed doloribus non repellendus qui
-            repellat perspiciatis tempora nobis minus dignissimos. Ad dolorum quaerat blanditiis id!
+            Somos una compañía líder en la venta de equipamientos deportivos. Desde el 2012, trabajamos incansablemente para que nuestros clientes
+            puedan encontrar de manera rápida y eficiente, artículos de primer nivel.
+            <br /> <br /> Nuestro objetivo es satisfacer las necesidades de los deportistas aficionados, como los de alto rendimiento. Proporcionado
+            productos de la mejor calidad, con
+            <b> alta resistencia y durabilidad</b>.
           </p>
         </article>
       </section>

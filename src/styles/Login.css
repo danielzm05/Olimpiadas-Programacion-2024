@@ -3,6 +3,10 @@
   display: grid;
   place-content: center;
   color: var(--text-1);
+  background: url("../img/login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   h1 {
     font-family: "Josefin Sans", sans-serif;
@@ -55,6 +59,9 @@
     display: flex;
     gap: 10px;
     justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+
     & a {
       color: var(--text-1);
       text-decoration: none;

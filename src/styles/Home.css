@@ -6,7 +6,10 @@
 .home-page .home-section:nth-child(1) {
   display: grid;
   place-content: center;
-  background: var(--section);
+  background: url("../img/main.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   & h1 {
     font-size: clamp(1rem, 14vw, 8rem);
@@ -86,6 +89,6 @@
     background-color: var(--background);
     border-radius: 20px;
     padding: 30px;
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 }
