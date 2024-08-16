@@ -2,7 +2,7 @@ import { Home } from "./pages/Home";
 import { Products } from "./pages/Products";
 import { Login } from "./pages/Login";
 import { Admin } from "./pages/Admin";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {

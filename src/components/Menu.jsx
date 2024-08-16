@@ -1,14 +1,16 @@
 import "../styles/Menu.css";
 import { IconX } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo.png";
+import { Logo } from "./Logo";
 
 export function Menu({ isClose }) {
   const navigate = useNavigate();
 
   return (
     <section className="menu-modal">
-      <img src={logo} alt="Sport-fit Logo" />
+      <div onClick={() => navigate("/")} className="logo-container">
+        <Logo />
+      </div>
       <button className="close-btn" onClick={isClose}>
         <IconX size={25} />
       </button>

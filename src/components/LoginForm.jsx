@@ -8,6 +8,7 @@ export function LoginForm() {
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { value, name } = e.target;
@@ -18,8 +19,27 @@ export function LoginForm() {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: formValues.email,
+        password: formValues.password,
+      });
+
+      if (error) {
+        setErrorLogin(true);
+      } else {
+        navigate("/admin", { replace: true });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <form /* onSubmit={handleSubmit} */>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="email">Correo electrónico</label>
       <input className="input-data" type="email" id="email" name="email" placeholder="Email" required onChange={handleInputChange} />
       <label htmlFor="password">Contraseña</label>

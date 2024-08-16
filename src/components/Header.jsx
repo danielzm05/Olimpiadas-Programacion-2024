@@ -1,17 +1,21 @@
 import { IconUser } from "@tabler/icons-react";
 import { IconShoppingBag } from "@tabler/icons-react";
 import { IconMenu2 } from "@tabler/icons-react";
+import { IconLogout } from "@tabler/icons-react";
 import { Carrito } from "./Carrito";
 import { Menu } from "./Menu";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
-import "../styles/Header.css";
 import { useState } from "react";
+import { useAuthContext } from "../context/AuthContext";
+import "../styles/Header.css";
 
 export function Header({ dark = false }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const { user, logOut } = useAuthContext();
   const navigate = useNavigate();
+
   return (
     <header className={dark ? "dark-theme main-header" : "main-header"}>
       <div className="burger-container">
@@ -23,11 +27,20 @@ export function Header({ dark = false }) {
       </div>
       <nav>
         <ul>
-          <li>
-            <a onClick={() => navigate("/login")}>
-              <IconUser size={30} />
-            </a>
-          </li>
+          {user ? (
+            <li>
+              <a onClick={() => logOut()}>
+                <IconLogout size={30} />
+              </a>
+            </li>
+          ) : (
+            <li>
+              <a onClick={() => navigate("/login")}>
+                <IconUser size={30} />
+              </a>
+            </li>
+          )}
+
           <li onClick={() => setOpenCart(true)}>
             <a href="#">
               <IconShoppingBag size={30} />
