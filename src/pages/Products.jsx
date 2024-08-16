@@ -3,11 +3,11 @@ import { useCarritoContext } from "../context/CarritoContext";
 import { ProductCard } from "../components/ProductCard";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import "../styles/Products.css";
 import { useEffect } from "react";
+import "../styles/Products.css";
 
 export function Products() {
-  const { products, getProducts } = useProductsContext();
+  const { products, getProducts, deleteProduct } = useProductsContext();
   const { addProduct } = useCarritoContext();
 
   useEffect(() => {
@@ -26,8 +26,9 @@ export function Products() {
               name={product.nombre}
               description={product.descripcion}
               price={product.precio}
-              img={product.imagen}
               addToCart={() => addProduct(product)}
+              edit={user}
+              remove={() => deleteProduct(product.id_producto)}
             />
           ))}
         </div>

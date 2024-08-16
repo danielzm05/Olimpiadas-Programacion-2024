@@ -32,5 +32,12 @@ export const ProductsProvider = ({ children }) => {
     getProducts();
   };
 
-  return <ProductsContext.Provider value={{ products, getProducts, createProduct }}>{children}</ProductsContext.Provider>;
+  const deleteProduct = async (id) => {
+    const { error } = await supabase.from("Producto").delete().eq("id_producto", id);
+
+    if (error) throw error;
+    getProducts();
+  };
+
+  return <ProductsContext.Provider value={{ products, getProducts, createProduct, deleteProduct }}>{children}</ProductsContext.Provider>;
 };

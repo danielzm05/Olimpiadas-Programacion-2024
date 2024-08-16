@@ -1,9 +1,15 @@
 import { IconPlus } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import "../styles/ProductCard.css";
 
-export function ProductCard({ name, description, price, img, addToCart }) {
+export function ProductCard({ name, description, price, addToCart, edit = false, remove }) {
   return (
     <article className="product-card">
+      {edit && (
+        <div onClick={remove} className="btn-delete">
+          <IconX size={18} />
+        </div>
+      )}
       <section>
         <h3>{name}</h3>
         <p className="product-description">{description}</p>

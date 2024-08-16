@@ -1,5 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { useProductsContext } from "../context/ProductsContext";
+import "../styles/CreateNewProduct.css";
 import { useState } from "react";
 
 export function CreateNewProduct() {

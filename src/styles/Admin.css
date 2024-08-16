@@ -1,47 +1,17 @@
 .admin-page {
-  padding: 100px 30px;
-}
-.new-product {
-  max-width: 650px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 15px;
-}
-
-.new-product-form {
-  flex: 2;
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  padding: 100px 30px;
 
-  label {
-    margin-top: 10px;
-  }
+  & .products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 30px;
+    justify-content: left;
 
-  .input-data {
-    height: 36px;
-    border: solid 1px var(--border);
-    background-color: transparent;
-    color: var(--text-3);
-    border-radius: 10px;
-    font-size: 1rem;
-    outline: none;
-    padding: 0 8px;
-  }
-
-  input[type="submit"] {
-    margin-top: 30px;
-    height: 45px;
-    border: none;
-    font-size: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    font-family: "Josefin Sans", sans-serif;
-    font-weight: 500;
-    color: var(--text-1);
-    background-color: var(--section);
+    .product-card:hover {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
   }
 }

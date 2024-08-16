@@ -1,0 +1,44 @@
+.new-product {
+  max-width: 650px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.new-product-form {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-top: 10px;
+  }
+
+  .input-data {
+    height: 36px;
+    border: solid 1px var(--border);
+    background-color: transparent;
+    color: var(--text-3);
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    padding: 0 8px;
+  }
+
+  input[type="submit"] {
+    margin-top: 30px;
+    height: 45px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 500;
+    color: var(--text-1);
+    background-color: var(--section);
+  }
+}
