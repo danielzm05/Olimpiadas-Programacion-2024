@@ -55,10 +55,6 @@ export function CreateNewProduct() {
 
         <label htmlFor="stock">Stock</label>
         <input className="input-data" type="number" id="stock" name="stock" placeholder="0000" minLength={4} required onChange={handleInputChange} />
-
-        <label htmlFor="imagen">URL de la imagen</label>
-        <input className="input-data" type="url" id="imagen" name="imagen" placeholder="https://imagen.png" required onChange={handleInputChange} />
-
         <label htmlFor="descripcion">Descripción</label>
         <input type="text" className="input-data" id="descripcion" name="descripcion" required onChange={handleInputChange}></input>
 

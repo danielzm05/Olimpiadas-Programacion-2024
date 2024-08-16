@@ -23,7 +23,6 @@ export const ProductsProvider = ({ children }) => {
         id_producto: newProduct.id_producto,
         nombre: newProduct.nombre,
         precio: newProduct.precio,
-        imagen: newProduct.imagen,
         stock: newProduct.stock,
         descripcion: newProduct.descripcion,
       },

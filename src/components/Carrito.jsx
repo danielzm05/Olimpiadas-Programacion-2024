@@ -22,7 +22,6 @@ export function Carrito({ isClose }) {
               description={product.descripcion}
               price={product.precio * product.cantidad}
               cantidad={product.cantidad}
-              img={product.imagen}
               remove={() => removeProduct(product.id_producto)}
               increase={() => increaseQuantity(product.id_producto)}
               decrease={() => decreaseQuantity(product.id_producto)}
@@ -38,10 +37,9 @@ export function Carrito({ isClose }) {
   );
 }
 
-function CartProduct({ name, description, cantidad, price, img, remove, increase, decrease }) {
+function CartProduct({ name, description, cantidad, price, remove, increase, decrease }) {
   return (
     <article className="cart-product">
-      <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
       <section className="product-info">
         <span>
           <h3>{name}</h3>

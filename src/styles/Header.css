@@ -13,9 +13,24 @@
   background: transparent;
 }
 
+.main-header .burguer-container {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
 .main-header .logo {
-  width: 80px;
-  height: 80px;
+  & img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.main-header nav {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  justify-content: end;
 }
 
 .main-header ul {

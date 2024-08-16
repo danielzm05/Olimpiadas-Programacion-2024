@@ -12,12 +12,13 @@ export function Header() {
   const [openCart, setOpenCart] = useState(false);
   return (
     <header className="main-header">
-      <a href="#" onClick={() => setOpenMenu(true)}>
+      <div className="burguer-container" onClick={() => setOpenMenu(true)}>
         <IconMenu2 size={30} />
-      </a>
-      <a href="/">
-        <img className="logo" src={logo} alt="Logo" />
-      </a>
+      </div>
+
+      <div className="logo">
+        <img src={logo} alt="Logo" />
+      </div>
 
       <nav>
         <ul>

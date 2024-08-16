@@ -4,7 +4,6 @@ import "../styles/ProductCard.css";
 export function ProductCard({ name, description, price, img, addToCart }) {
   return (
     <article className="product-card">
-      <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
       <section>
         <h3>{name}</h3>
         <p className="product-description">{description}</p>

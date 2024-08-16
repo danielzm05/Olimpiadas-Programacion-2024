@@ -4,20 +4,10 @@
   justify-content: space-between;
   width: 250px;
   border: 1px solid var(--border);
-  height: 450px;
+  height: 150px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s ease-in;
-
-  & .product-img {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 90% 90%;
-    height: 250px;
-    width: 100%;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-  }
 
   & section {
     padding: 15px 10px;
