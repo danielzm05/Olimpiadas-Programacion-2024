@@ -2,14 +2,16 @@ import { IconBrandInstagram } from "@tabler/icons-react";
 import { IconBrandWhatsapp } from "@tabler/icons-react";
 import { IconMail } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo.png";
+import { Logo } from "./Logo";
 import "../styles/Footer.css";
 
 export function Footer() {
   const navigate = useNavigate();
   return (
     <footer className="main-footer">
-      <img className="footer-logo" onClick={() => navigate("/")} src={logo} alt="Logo" />
+      <div onClick={() => navigate("/")} className="logo-container">
+        <Logo />
+      </div>
       <ul>
         <li>
           <IconBrandInstagram size={30} />

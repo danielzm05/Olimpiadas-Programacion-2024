@@ -15,15 +15,9 @@ export function Menu({ isClose }) {
       <h1>MENU</h1>
 
       <ul>
-        <li onClick={() => navigate("/")}>
-          <a href="/">INICIO</a>
-        </li>
-        <li onClick={() => navigate("/productos")}>
-          <a href="/productos">SHOP</a>
-        </li>
-        <li onClick={() => navigate("/login")}>
-          <a href="/login">INICIAR SESIÓN</a>
-        </li>
+        <li onClick={() => navigate("/")}>INICIO</li>
+        <li onClick={() => navigate("/productos")}>SHOP</li>
+        <li onClick={() => navigate("/login")}>INICIAR SESIÓN</li>
       </ul>
     </section>
   );

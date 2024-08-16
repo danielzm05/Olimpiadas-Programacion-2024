@@ -1,8 +1,7 @@
 .products-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 150px 60px;
+  padding: 100px 60px;
   gap: 40px;
 
   & h2 {

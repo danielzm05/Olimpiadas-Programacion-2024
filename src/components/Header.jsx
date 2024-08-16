@@ -4,22 +4,23 @@ import { IconMenu2 } from "@tabler/icons-react";
 import { Carrito } from "./Carrito";
 import { Menu } from "./Menu";
 import { useNavigate } from "react-router-dom";
-import logo from "../img/logo.png";
+import { Logo } from "./Logo";
 import "../styles/Header.css";
 import { useState } from "react";
 
-export function Header() {
+export function Header({ dark = false }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
   const navigate = useNavigate();
   return (
-    <header className="main-header">
+    <header className={dark ? "dark-theme main-header" : "main-header"}>
       <div className="burger-container">
         <IconMenu2 onClick={() => setOpenMenu(true)} size={30} />
       </div>
 
-      <img onClick={() => navigate("/")} src={logo} className="logo" alt="Logo" />
-
+      <div onClick={() => navigate("/")} className="logo-container">
+        <Logo />
+      </div>
       <nav>
         <ul>
           <li>

@@ -11,6 +11,7 @@
   align-items: center;
   height: 100vh;
   background: var(--section);
+  color: var(--text-1);
   animation: fadeIn 0.3s forwards;
 
   & .close-btn {
@@ -47,13 +48,13 @@
     flex-direction: column;
     gap: 20px;
 
-    & a {
-      color: var(--text-1);
-      text-decoration: none;
+    & li {
+      font-size: 1.2rem;
     }
 
-    & a:hover {
+    & li:hover {
       color: var(--hover);
+
       transition: 0.3s ease-in;
       cursor: pointer;
     }
