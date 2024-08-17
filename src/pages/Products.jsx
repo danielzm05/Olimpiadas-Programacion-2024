@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import "../styles/Products.css";
 
 export function Products() {
-  const { products, getProducts, deleteProduct } = useProductsContext();
+  const { products, getProducts } = useProductsContext();
   const { addProduct } = useCarritoContext();
 
   useEffect(() => {
@@ -27,8 +27,6 @@ export function Products() {
               description={product.descripcion}
               price={product.precio}
               addToCart={() => addProduct(product)}
-              edit={user}
-              remove={() => deleteProduct(product.id_producto)}
             />
           ))}
         </div>

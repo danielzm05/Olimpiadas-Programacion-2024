@@ -5,7 +5,7 @@
   justify-content: space-between;
   width: 250px;
   border: 1px solid var(--border);
-  height: 150px;
+  height: 200px;
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s ease-in;

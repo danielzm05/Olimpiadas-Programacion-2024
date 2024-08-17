@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 export const CarritoContext = createContext();
 
@@ -17,7 +18,7 @@ export const CarritoProvider = ({ children }) => {
         return [...prevCarrito, { ...newProduct, cantidad: 1 }];
       }
     });
-    console.log(carrito);
+    toast.success("Se agregó al carrito");
   };
 
   const removeProduct = (id) => {

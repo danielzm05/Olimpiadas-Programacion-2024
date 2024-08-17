@@ -1,5 +1,6 @@
 import { useContext, createContext, useState } from "react";
 import { supabase } from "../backend/client";
+import toast from "react-hot-toast";
 export const ProductsContext = createContext();
 
 export const useProductsContext = () => {
@@ -29,6 +30,7 @@ export const ProductsProvider = ({ children }) => {
     ]);
 
     if (error) throw error;
+
     getProducts();
   };
 
