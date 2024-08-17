@@ -20,7 +20,7 @@ export function ToasterContainer() {
 
         success: {
           theme: {
-            primary: "green",
+            primary: "#10BE41",
             secondary: "white",
           },
         },

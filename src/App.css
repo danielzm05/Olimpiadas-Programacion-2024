@@ -3,11 +3,11 @@
   --background: #ffffff;
   --section: #070707;
   --text-1: #ffffff;
-  --text-2: #9b9b9b;
-  --text-3: #212529;
-  --border: #b8b8b8;
+  --text-2: #969696;
+  --text-3: #090909;
+  --border: #efefef;
   --hover: #e3e6f07a;
-  --alert: #d00000;
+  --alert: #e50707;
 
   --font-sz: clamp();
 }
@@ -21,7 +21,7 @@
 
 body {
   min-height: 100vh;
-  width: 100vw;
+  color: var(--text-3);
   overflow-x: hidden;
 }
 

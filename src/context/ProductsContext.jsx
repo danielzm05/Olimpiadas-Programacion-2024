@@ -14,7 +14,6 @@ export const ProductsProvider = ({ children }) => {
     const { data, error } = await supabase.from("Producto").select("*");
 
     if (error) throw error;
-    console.log(data);
     setProducts(data);
   };
 

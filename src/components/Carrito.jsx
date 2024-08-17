@@ -32,6 +32,8 @@ export function Carrito({ isClose }) {
             Tu carrito esta vacío <br /> <IconMoodSad size={20} />
           </p>
         )}
+
+        <footer></footer>
       </section>
     </div>
   );
@@ -42,7 +44,7 @@ function CartProduct({ name, description, cantidad, price, remove, increase, dec
     <article className="cart-product">
       <section className="product-info">
         <span>
-          <h3>{name}</h3>
+          <h3 className="name">{name}</h3>
           <p className="price">${price}</p>
         </span>
         <p>{description}</p>

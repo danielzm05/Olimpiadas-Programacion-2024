@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkUser = async () => {
     const { data } = await supabase.auth.getUser();
-    console.log(data);
+
     if (data.user) {
       setUser(data.user);
       getUserInfo(data.user.id);
@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }) => {
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       setUserEvent(event);
-      console.log(event);
       checkUser();
     });
 
