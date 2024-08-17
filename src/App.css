@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Quicksand:wght@300..700&display=swap");
 :root {
   --background: #ffffff;
+  --background-2: #e8e8e8;
   --section: #070707;
   --text-1: #ffffff;
   --text-2: #969696;
   --text-3: #090909;
-  --border: #efefef;
+  --border: #e8e8e8;
   --hover: #e3e6f07a;
   --alert: #e50707;
 

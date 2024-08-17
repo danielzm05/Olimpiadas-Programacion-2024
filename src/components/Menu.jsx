@@ -19,6 +19,7 @@ export function Menu({ isClose }) {
       <ul>
         <li onClick={() => navigate("/")}>INICIO</li>
         <li onClick={() => navigate("/productos")}>SHOP</li>
+        <li onClick={() => navigate("/carrito")}>CARRITO</li>
         <li onClick={() => navigate("/login")}>INICIAR SESIÓN</li>
       </ul>
     </section>

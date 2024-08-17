@@ -3,6 +3,7 @@
   flex-direction: column;
   padding: 100px 60px;
   gap: 40px;
+  background: var(--background-2);
 
   & h2 {
     text-align: center;
@@ -10,16 +11,16 @@
     font-weight: 400;
     color: var(--text-3);
   }
-}
 
-.products-container {
-  display: grid;
-  justify-content: center;
+  .products-container {
+    display: grid;
+    justify-content: center;
 
-  grid-template-columns: repeat(auto-fit, 250px);
-  gap: 30px;
+    grid-template-columns: repeat(auto-fit, 250px);
+    gap: 30px;
 
-  .product-card:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    .product-card:hover {
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    }
   }
 }

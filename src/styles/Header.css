@@ -16,11 +16,19 @@
 
 .main-header.dark-theme,
 .main-header.dark-theme a {
+  color: var(--text-1);
+  background-color: var(--section);
+}
+
+.main-header.dark-theme .logo:hover,
+.main-header.dark-theme a:hover {
+  fill: var(--text-2);
   color: var(--text-2);
+  transition: 0.3s ease-in;
 }
 
 .main-header.dark-theme .logo {
-  fill: var(--text-2);
+  fill: var(--text-1);
 }
 
 .main-header .burger-container {
@@ -57,10 +65,10 @@
   font-size: 3vh;
   text-decoration: none;
   color: var(--text-1);
+  transition: 0.3s ease-in;
+  cursor: pointer;
 }
 
 & a:hover {
   color: var(--hover);
-  transition: 0.3s ease-in;
-  cursor: pointer;
 }
