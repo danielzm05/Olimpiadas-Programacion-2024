@@ -10,6 +10,7 @@ export const useAuthContext = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [userEvent, setUserEvent] = useState(null);
   const navigate = useNavigate();
 
@@ -18,11 +19,21 @@ export const AuthProvider = ({ children }) => {
     if (error) throw error;
   };
 
+  const getUserInfo = async (userId = user.id) => {
+    if (userId) {
+      const { data, error } = await supabase.from("usuario").select("*").eq("id_usuario", userId);
+
+      if (error) throw error;
+      setUserInfo(data[0]);
+    }
+  };
+
   const checkUser = async () => {
     const { data } = await supabase.auth.getUser();
     console.log(data);
     if (data.user) {
       setUser(data.user);
+      getUserInfo(data.user.id);
     } else {
       navigate("/", { replace: true });
       setUser(null);
@@ -43,5 +54,5 @@ export const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  return <AuthContext.Provider value={{ user, userEvent, logOut }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, userInfo, userEvent, getUserInfo, logOut }}>{children}</AuthContext.Provider>;
 };
