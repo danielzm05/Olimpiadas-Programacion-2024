@@ -31,7 +31,11 @@
     padding: 15px 10px;
 
     & h3 {
+      height: 55px;
       font-size: 1.3rem;
+      word-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     & .product-description {

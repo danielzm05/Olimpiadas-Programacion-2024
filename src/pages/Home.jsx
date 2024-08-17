@@ -11,7 +11,7 @@ export function Home() {
           <h1>BIENVENIDO</h1>
         </section>
 
-        <section className="home-section">
+        {/* <section className="home-section">
           <h2>PRODUCTOS PRINCIPALES</h2>
           <div className="cards-container">
             <article className="card">
@@ -24,28 +24,10 @@ export function Home() {
                 </p>
               </section>
             </article>
-            <article className="card">
-              <img src="https://allmusic-arg.netlify.app/assets/img/mic1.jpg" alt="microfono" />
-              <section>
-                <h3>Tipo de Producto</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet nobis omnis, debitis id sint error unde numquam nostrum odit sunt
-                  dolore labore iure a obcaecati provident placeat deserunt odio ullam.
-                </p>
-              </section>
-            </article>
-            <article className="card">
-              <img src="https://allmusic-arg.netlify.app/assets/img/mic1.jpg" alt="microfono" />
-              <section>
-                <h3>Tipo de Producto</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet nobis omnis, debitis id sint error unde numquam nostrum odit sunt
-                  dolore labore iure a obcaecati provident placeat deserunt odio ullam.
-                </p>
-              </section>
-            </article>
+            
+            
           </div>
-        </section>
+        </section> */}
 
         <section className="home-section">
           <h2>¿Quiénes Somos?</h2>

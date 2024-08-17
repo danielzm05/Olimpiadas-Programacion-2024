@@ -29,15 +29,22 @@ export const ProductsProvider = ({ children }) => {
       },
     ]);
 
-    if (error) throw error;
-
+    if (error) {
+      toast.error("Error al crear el producto");
+      throw error;
+    }
+    toast.success("Producto creado correctamente");
     getProducts();
   };
 
   const deleteProduct = async (id) => {
     const { error } = await supabase.from("Producto").delete().eq("id_producto", id);
 
-    if (error) throw error;
+    if (error) {
+      toast.error("Error al eliminar el producto");
+      throw error;
+    }
+    toast.success("Producto eliminado correctamente");
     getProducts();
   };
 

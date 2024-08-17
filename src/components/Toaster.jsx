@@ -13,14 +13,12 @@ export function ToasterContainer() {
         className: "",
         duration: 3000,
         style: {
+          border: "1px solid #b8b8b8",
           background: "white",
           color: "#9b9b9b",
         },
 
         success: {
-          style: {
-            border: "1px solid #b8b8b8",
-          },
           theme: {
             primary: "green",
             secondary: "white",
