@@ -5,6 +5,8 @@ import { useProductsContext } from "../context/ProductsContext";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
+import { Table } from "../components/Table";
+import { IconTrash } from "@tabler/icons-react";
 import "../styles/Admin.css";
 
 export function Admin() {
@@ -20,19 +22,27 @@ export function Admin() {
       <Header dark={true} />
       <main className="admin-page">
         <CreateNewProduct />
-        <h2>Editar Productos</h2>
-        <div className="products-container">
+
+        <Table title="Productos">
+          <div className="table-row product">
+            <span>Código</span>
+            <span>Producto</span>
+            <span>Precio</span>
+            <span>Stock</span>
+            <span>-</span>
+          </div>
           {products.map((product) => (
-            <ProductCard
-              key={product.id_producto}
-              name={product.nombre}
-              description={`Stock:${product.stock} ${product.descripcion}`}
-              price={product.precio}
-              edit={user}
-              remove={() => deleteProduct(product.id_producto)}
-            />
+            <div className="table-row product">
+              <span>{`#${product.id_producto}`}</span>
+              <span>{product.nombre}</span>
+              <span>{`$${product.precio}`}</span>
+              <span>{product.stock}</span>
+              <span onClick={() => deleteProduct(product.id_producto)}>
+                <IconTrash size={15} />
+              </span>
+            </div>
           ))}
-        </div>
+        </Table>
       </main>
       <Footer />
     </>

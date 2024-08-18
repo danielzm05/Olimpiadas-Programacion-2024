@@ -1,0 +1,36 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--background);
+  border-radius: 10px;
+  position: relative;
+  box-shadow: var(--box-shadow);
+  padding: 15px 10px;
+
+  .table-content {
+    margin-top: 15px;
+
+    .table-row {
+      display: grid;
+      gap: 10px;
+      color: var(--text-2);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--border);
+      transition: 0.1s ease;
+      cursor: pointer;
+    }
+
+    .table-row:not(:nth-child(1)):hover {
+      background: var(--hover);
+    }
+
+    .table-row.product {
+      grid-template-columns: 0.5fr 3fr 1fr 0.5fr 0.2fr;
+
+      & span {
+        text-align: left;
+      }
+    }
+  }
+}

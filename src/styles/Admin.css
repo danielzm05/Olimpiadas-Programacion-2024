@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 20px;
   padding: 100px 30px;
+  background: var(--background-2);
 
   & .products-container {
     display: grid;
