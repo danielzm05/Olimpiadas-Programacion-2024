@@ -1,13 +1,21 @@
 import { IconMoodSad } from "@tabler/icons-react";
 import { IconArrowRight } from "@tabler/icons-react";
 import { CartProduct } from "./CartProduct";
+import { useEffect } from "react";
 import { useCarritoContext } from "../context/CarritoContext";
 import "../styles/Carrito.css";
 
 function Cart() {
-  const { carrito, removeProduct, increaseQuantity, decreaseQuantity } = useCarritoContext();
-  const subtotal = carrito.reduce((total, product) => {
-    return total + product.precio * product.cantidad;
+  const { cart, getCart, removeProduct, updateQuantity } = useCarritoContext();
+
+  useEffect(() => {
+    getCart();
+  }, []);
+
+  const subtotal = cart.reduce((total, product) => {
+    const precio = product.Producto.precio || 0;
+    const cantidad = product.cantidad || 0;
+    return total + precio * cantidad;
   }, 0);
 
   const envio = subtotal * 0.01;
@@ -20,17 +28,17 @@ function Cart() {
       </header>
 
       <section className="products-container">
-        {carrito.length !== 0 ? (
-          carrito.map((product) => (
+        {cart.length !== 0 ? (
+          cart.map((product) => (
             <CartProduct
-              key={product.id_producto}
-              name={product.nombre}
-              description={product.descripcion}
-              price={product.precio * product.cantidad}
+              key={product.id_producto_carrito}
+              name={product.Producto.nombre}
+              description={product.Producto.descripcion}
+              price={product.Producto.precio}
               cantidad={product.cantidad}
-              remove={() => removeProduct(product.id_producto)}
-              increase={() => increaseQuantity(product.id_producto)}
-              decrease={() => decreaseQuantity(product.id_producto)}
+              remove={() => removeProduct(product.id_producto_carrito)}
+              increase={() => updateQuantity(product.id_producto, product.cantidad + 1, product.Producto.stock)}
+              decrease={() => updateQuantity(product.id_producto, product.cantidad - 1, product.Producto.stock)}
             />
           ))
         ) : (

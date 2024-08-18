@@ -7,7 +7,7 @@ export function CartProduct({ name, description, cantidad, price, remove, increa
       <section className="product-info">
         <span>
           <h3 className="name">{name}</h3>
-          <p className="price">${price}</p>
+          <p className="price">${price * cantidad}</p>
         </span>
         <p className="description">{description}</p>
       </section>

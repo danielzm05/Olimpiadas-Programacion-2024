@@ -37,6 +37,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       navigate("/", { replace: true });
       setUser(null);
+      setUserInfo(null);
     }
   };
 
