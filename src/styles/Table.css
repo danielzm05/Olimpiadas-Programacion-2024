@@ -9,6 +9,7 @@
   padding: 15px 10px;
 
   .table-content {
+    overflow-y: scroll;
     margin-top: 15px;
 
     .table-row {
@@ -23,14 +24,20 @@
 
     .table-row:not(:nth-child(1)):hover {
       background: var(--hover);
+      & span {
+        text-align: left;
+      }
     }
 
     .table-row.product {
       grid-template-columns: 0.5fr 3fr 1fr 0.5fr 0.2fr;
+    }
 
-      & span {
-        text-align: left;
-      }
+    .table-row.sale {
+      grid-template-columns: 0.5fr 1fr 1fr 1fr;
+    }
+    .table-row.sale_detail {
+      grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr;
     }
   }
 }

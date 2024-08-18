@@ -1,9 +1,18 @@
 .admin-page {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto repeat(auto-fit, 70vh);
+  gap: 30px 20px;
   padding: 100px 30px;
   background: var(--background-2);
+
+  & .page-title {
+    grid-column: 1/-1;
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--text-3);
+  }
 
   & .products-container {
     display: grid;
@@ -14,5 +23,11 @@
     .product-card:hover {
       box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    grid-template-columns: 1fr;
   }
 }

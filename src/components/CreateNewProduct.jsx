@@ -1,4 +1,3 @@
-import { ProductCard } from "./ProductCard";
 import { useProductsContext } from "../context/ProductsContext";
 import "../styles/CreateNewProduct.css";
 import { useState } from "react";
@@ -61,8 +60,6 @@ export function CreateNewProduct() {
 
         <input type="submit" value="Crear" />
       </form>
-
-      <ProductCard name={formValues.nombre} description={formValues.descripcion} price={formValues.precio} img={formValues.imagen} />
     </section>
   );
 }

@@ -9,12 +9,20 @@ export const useProductsContext = () => {
 
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [sales, setSales] = useState([]);
 
   const getProducts = async () => {
     const { data, error } = await supabase.from("Producto").select("*");
 
     if (error) throw error;
     setProducts(data);
+  };
+
+  const getSales = async () => {
+    const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))");
+    console.log(data);
+    if (error) throw error;
+    setSales(data);
   };
 
   const createProduct = async (newProduct) => {
@@ -47,5 +55,7 @@ export const ProductsProvider = ({ children }) => {
     getProducts();
   };
 
-  return <ProductsContext.Provider value={{ products, getProducts, createProduct, deleteProduct }}>{children}</ProductsContext.Provider>;
+  return (
+    <ProductsContext.Provider value={{ products, sales, getProducts, createProduct, deleteProduct, getSales }}>{children}</ProductsContext.Provider>
+  );
 };
