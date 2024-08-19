@@ -7,10 +7,11 @@ import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
 import { Table } from "../components/Table";
 import { IconTrash } from "@tabler/icons-react";
+import { IconSquareCheck } from "@tabler/icons-react";
 import "../styles/Admin.css";
 
 export function Admin() {
-  const { products, sales, getProducts, deleteProduct, getSales } = useProductsContext();
+  const { products, sales, updateSale, getProducts, deleteProduct, getSales } = useProductsContext();
   const { user } = useAuthContext();
   const [saleSelected, setSaleSelected] = useState(null);
 
@@ -43,8 +44,8 @@ export function Admin() {
               <span>{product.nombre}</span>
               <span>{`$${product.precio}`}</span>
               <span>{product.stock}</span>
-              <span onClick={() => deleteProduct(product.id_producto)}>
-                <IconTrash size={15} />
+              <span>
+                <IconTrash size={15} onClick={() => deleteProduct(product.id_producto)} />
               </span>
             </div>
           ))}
@@ -52,28 +53,27 @@ export function Admin() {
 
         <CreateNewProduct />
 
-        <Table title="Ventas">
+        <Table title="Pedido">
           <div className="table-row sale">
             <span>Código</span>
             <span>Fecha</span>
             <span>Hora</span>
-            <span>
-              <b>Total</b>
-            </span>
+            <span>Total</span>
+            <span>Estado</span>
           </div>
           {sales.map((sale) => (
             <div className="table-row sale" key={sale.id_venta} onClick={() => selected(sale)}>
               <span>{`#${sale.id_venta}`}</span>
               <span>{sale.fecha.slice(0, 10)}</span>
               <span>{sale.fecha.slice(11, 16)}</span>
-              <span>
-                <b>{`$${sale.total}`}</b>
-              </span>
+              <span>{`$${sale.total}`}</span>
+              <span className={`estado ${sale.entregado ? "entregado" : ""}`}>{sale.entregado ? "Entregado" : "Pendiente"}</span>
+              <span>{!sale.entregado && <IconSquareCheck size={15} onClick={() => updateSale(sale.id_venta)} />}</span>
             </div>
           ))}
         </Table>
 
-        <Table title={`Detalles de venta #${saleSelected ? saleSelected.id_venta : ""}`}>
+        <Table title={`Detalles de Pedido #${saleSelected ? saleSelected.id_venta : ""}`}>
           <div className="table-row sale_detail">
             <span>Cód</span>
             <span>Producto</span>

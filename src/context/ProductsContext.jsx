@@ -25,9 +25,21 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const getSales = async () => {
-    const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))");
+    const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))").order("id_venta", { ascending: true });
     if (error) throw error;
     setSales(data);
+  };
+
+  const updateSale = async (id_venta) => {
+    const { error } = await supabase
+      .from("Venta")
+      .update({
+        entregado: true,
+      })
+      .eq("id_venta", id_venta);
+
+    if (error) throw error;
+    getSales();
   };
 
   const getPurchases = async (userId = user?.id) => {
@@ -132,7 +144,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   return (
-    <ProductsContext.Provider value={{ products, sales, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale }}>
+    <ProductsContext.Provider
+      value={{ products, sales, updateSale, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale }}
+    >
       {children}
     </ProductsContext.Provider>
   );

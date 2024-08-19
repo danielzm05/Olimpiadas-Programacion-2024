@@ -34,7 +34,16 @@
     }
 
     .table-row.sale {
-      grid-template-columns: 0.5fr 1fr 1fr 1fr;
+      grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 0.2fr;
+
+      .estado {
+        font-weight: 600;
+        color: var(--text-2);
+      }
+
+      .estado.entregado {
+        color: var(--success);
+      }
     }
     .table-row.sale_detail {
       grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr;
