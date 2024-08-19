@@ -13,11 +13,12 @@ export const useProductsContext = () => {
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [sales, setSales] = useState([]);
+  const [purchases, setPurchases] = useState([]);
   const { user } = useAuthContext();
   const { cleanCart } = useCarritoContext();
 
   const getProducts = async () => {
-    const { data, error } = await supabase.from("Producto").select("*");
+    const { data, error } = await supabase.from("Producto").select("*").order("id_producto", { ascending: true });
 
     if (error) throw error;
     setProducts(data);
@@ -25,9 +26,19 @@ export const ProductsProvider = ({ children }) => {
 
   const getSales = async () => {
     const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))");
-    console.log(data);
     if (error) throw error;
     setSales(data);
+  };
+
+  const getPurchases = async (userId = user?.id) => {
+    if (userId) {
+      const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))").eq("id_cliente", userId);
+      if (error) throw error;
+      console.log(data);
+      setPurchases(data);
+    } else {
+      setPurchases([]);
+    }
   };
 
   const makeSale = async (cart, total) => {
@@ -60,7 +71,7 @@ export const ProductsProvider = ({ children }) => {
           await updateProductStock(product.id_producto, product.cantidad, product.Producto.stock);
         })
       );
-      toast.success("Venta realizada con éxito");
+      toast.success("Pedido realizado con éxito");
       cleanCart(user.id);
       getSales();
     } catch (err) {
@@ -103,8 +114,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const updateProductStock = async (id_producto, cantidadVendida, stock) => {
-    console.log(id_producto);
-    console.log(newStock);
+    const newStock = stock - cantidadVendida;
     const { error } = await supabase.from("Producto").update({ stock: newStock }).eq("id_producto", id_producto);
 
     if (error) throw error;
@@ -122,7 +132,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   return (
-    <ProductsContext.Provider value={{ products, sales, getProducts, createProduct, deleteProduct, getSales, makeSale }}>
+    <ProductsContext.Provider value={{ products, sales, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale }}>
       {children}
     </ProductsContext.Provider>
   );

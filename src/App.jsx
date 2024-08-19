@@ -4,6 +4,7 @@ import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import { Admin } from "./pages/Admin";
 import { Carrito } from "./pages/Carrito";
+import { Compras } from "./pages/Compras";
 import { ProtectedRoute } from "../src/components/ProtectedRoute";
 import { useAuthContext } from "./context/AuthContext";
 import { ToasterContainer } from "./components/Toaster";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/productos" element={<Products />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
+        <Route path="/compras" element={<Compras />}></Route>
 
         <Route path="/carrito" element={<Carrito />}></Route>
 

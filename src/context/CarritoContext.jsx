@@ -15,11 +15,18 @@ export const CarritoProvider = ({ children }) => {
 
   const getCart = async (userId = user?.id) => {
     if (userId) {
-      const { data, error } = await supabase.from("Carrito_Producto").select("*").eq("id_usuario", userId).select("*, Producto (*)");
+      const { data, error } = await supabase
+        .from("Carrito_Producto")
+        .select("*")
+        .eq("id_usuario", userId)
+        .select("*, Producto (*)")
+        .order("fecha", { ascending: true });
 
       if (error) throw error;
       console.log(data);
       setCart(data);
+    } else {
+      setCart([]);
     }
   };
 
@@ -62,7 +69,8 @@ export const CarritoProvider = ({ children }) => {
       .update({
         cantidad: cantidad,
       })
-      .eq("id_producto", id_producto);
+      .eq("id_producto", id_producto)
+      .eq("id_usuario", user.id);
 
     if (error) throw error;
     getCart();
@@ -73,6 +81,7 @@ export const CarritoProvider = ({ children }) => {
       value={{
         cart,
         getCart,
+        setCart,
         cleanCart,
         addProduct,
         removeProduct,

@@ -1,0 +1,41 @@
+.purchase-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  background: var(--background);
+  box-shadow: var(--box-shadow);
+  border-radius: 10px;
+
+  header {
+    padding: 10px 0;
+    color: var(--text-2);
+    font-size: 0.9rem;
+  }
+
+  & .purchase-product {
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+
+    .estado {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .estado.entregado {
+      color: var(--success);
+    }
+
+    .description,
+    footer {
+      font-size: 0.9rem;
+      color: var(--text-2);
+    }
+
+    footer {
+      display: flex;
+      gap: 10px;
+      padding-top: 10px;
+    }
+  }
+}
