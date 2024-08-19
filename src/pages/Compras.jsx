@@ -16,10 +16,15 @@ export function Compras() {
     <>
       <Header dark={true} />
       <main className="compras-page">
-        <h2>Mis Compras</h2>
+        <h2>MIS COMPRAS</h2>
         <div className="compras-container">
           {purchases.map((purchase) => (
-            <PurchaseCard key={purchase.id_venta} fecha={purchase.fecha.slice(0, 10)} estado={purchase.estado} productos={purchase.Venta_Producto} />
+            <PurchaseCard
+              key={purchase.id_venta}
+              fecha={purchase.fecha.slice(0, 10)}
+              estado={purchase.entregado}
+              productos={purchase.Venta_Producto}
+            />
           ))}
         </div>
       </main>
