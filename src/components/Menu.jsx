@@ -23,7 +23,13 @@ export function Menu({ isClose }) {
         <li onClick={() => navigate("/carrito")}>CARRITO</li>
         {userInfo?.id_rol === 1 && <li onClick={() => navigate("/admin")}>MI TIENDA</li>}
 
-        {user ? <li onClick={() => logOut()}>CERRAR SESIÓN</li> : <li onClick={() => navigate("/login")}>INICIAR SESIÓN</li>}
+        {user ? (
+          <li onClick={() => logOut()}>CERRAR SESIÓN</li>
+        ) : (
+          <>
+            <li onClick={() => navigate("/login")}>INICIAR SESIÓN</li> <li onClick={() => navigate("/signup")}>REGISTRARSE</li>
+          </>
+        )}
       </ul>
     </section>
   );
