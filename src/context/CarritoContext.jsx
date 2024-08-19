@@ -35,6 +35,7 @@ export const CarritoProvider = ({ children }) => {
       toast.error("Error al agregar el producto");
       throw error;
     }
+    getCart();
     toast.success("Se agregó al carrito");
   };
 

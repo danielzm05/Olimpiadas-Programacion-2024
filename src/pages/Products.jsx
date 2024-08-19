@@ -24,6 +24,7 @@ export function Products() {
     }
 
     const existingProduct = cart.find((item) => item.id_producto === product.id_producto);
+
     if (existingProduct) {
       updateQuantity(product.id_producto, existingProduct.cantidad + 1, product.stock);
       toast.success("Se agregó al carrito");
