@@ -5,7 +5,6 @@ import { ProductCard } from "../components/ProductCard";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useEffect } from "react";
-
 import toast from "react-hot-toast";
 import "../styles/Products.css";
 
@@ -33,13 +32,15 @@ export function Products() {
     }
   };
 
+  const availableProducts = products.filter((product) => product.stock > 0);
+
   return (
     <>
       <Header dark={true} />
       <main className="products-page">
         <h2>NUESTROS PRODUCTOS</h2>
         <div className="products-container">
-          {products.map((product) => (
+          {availableProducts.map((product) => (
             <ProductCard
               key={product.id_producto}
               name={product.nombre}

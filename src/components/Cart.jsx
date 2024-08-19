@@ -3,11 +3,12 @@ import { IconArrowRight } from "@tabler/icons-react";
 import { CartProduct } from "./CartProduct";
 import { useEffect } from "react";
 import { useCarritoContext } from "../context/CarritoContext";
+import { useProductsContext } from "../context/ProductsContext";
 import "../styles/Carrito.css";
 
 function Cart() {
   const { cart, getCart, removeProduct, updateQuantity } = useCarritoContext();
-
+  const { makeSale } = useProductsContext();
   useEffect(() => {
     getCart();
   }, []);
@@ -61,7 +62,7 @@ function Cart() {
           <h3>Total</h3>
           <p>${total}</p>
         </span>
-        <button className="btn-purchase">
+        <button className="btn-purchase" onClick={() => makeSale(cart, total)}>
           Comprar <IconArrowRight size={20} />
         </button>
       </footer>

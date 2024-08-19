@@ -7,7 +7,6 @@ import { useAuthContext } from "../context/AuthContext";
 export function Menu({ isClose }) {
   const navigate = useNavigate();
   const { user, userInfo, logOut } = useAuthContext();
-  console.log(userInfo);
   return (
     <section className="menu-modal">
       <div onClick={() => navigate("/")} className="logo-container">

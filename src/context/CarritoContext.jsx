@@ -46,6 +46,14 @@ export const CarritoProvider = ({ children }) => {
     toast.success("Se eliminó del carrito");
   };
 
+  const cleanCart = async (userId) => {
+    const { error } = await supabase.from("Carrito_Producto").delete().eq("id_usuario", userId);
+
+    if (error) throw error;
+
+    setCart([]);
+  };
+
   const updateQuantity = async (id_producto, cantidad, stock) => {
     if (cantidad <= 1 || cantidad > stock) return;
     const { error } = await supabase
@@ -64,6 +72,7 @@ export const CarritoProvider = ({ children }) => {
       value={{
         cart,
         getCart,
+        cleanCart,
         addProduct,
         removeProduct,
         updateQuantity,
