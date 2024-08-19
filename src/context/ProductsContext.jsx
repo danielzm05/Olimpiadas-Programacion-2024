@@ -31,6 +31,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const makeSale = async (cart, total) => {
+    console.log(cart);
     if (!user) return;
     if (!cart || cart.length === 0) {
       toast.error("El carrito está vacío");
@@ -56,7 +57,7 @@ export const ProductsProvider = ({ children }) => {
       await Promise.all(
         cart.map(async (product) => {
           await createSaleDetail(sale[0].id_venta, product.id_producto, product.cantidad, product.cantidad * product.Producto.precio);
-          await updateProductStock(product.id_producto, product.cantidad, product.stock);
+          await updateProductStock(product.id_producto, product.cantidad, product.Producto.stock);
         })
       );
       toast.success("Venta realizada con éxito");
@@ -102,10 +103,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const updateProductStock = async (id_producto, cantidadVendida, stock) => {
-    const { error } = await supabase
-      .from("Producto")
-      .update({ stock: stock - cantidadVendida })
-      .eq("id_producto", id_producto);
+    console.log(id_producto);
+    console.log(newStock);
+    const { error } = await supabase.from("Producto").update({ stock: newStock }).eq("id_producto", id_producto);
 
     if (error) throw error;
   };
