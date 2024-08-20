@@ -16,8 +16,11 @@
 
 .main-header.dark-theme,
 .main-header.dark-theme a {
-  color: var(--text-1);
-  background-color: var(--section);
+  color: var(--text-3);
+}
+
+.main-header.dark-theme .logo {
+  fill: var(--text-3);
 }
 
 .main-header.dark-theme .logo:hover,
@@ -25,10 +28,6 @@
   fill: var(--text-2);
   color: var(--text-2);
   transition: 0.3s ease-in;
-}
-
-.main-header.dark-theme .logo {
-  fill: var(--text-1);
 }
 
 .main-header .burger-container {
@@ -59,16 +58,16 @@
   align-items: center;
   gap: 15px;
   list-style: none;
-}
 
-& a {
-  font-size: 3vh;
-  text-decoration: none;
-  color: var(--text-1);
-  transition: 0.3s ease-in;
-  cursor: pointer;
-}
+  a {
+    font-size: 3vh;
+    text-decoration: none;
+    color: var(--text-1);
+    transition: 0.3s ease-in;
+    cursor: pointer;
+  }
 
-& a:hover {
-  color: var(--hover);
+  a:hover {
+    color: var(--hover);
+  }
 }
