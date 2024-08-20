@@ -1,96 +1,143 @@
+.home-page {
+  background: var(--section);
+  color: var(--text-1);
+}
+
 .home-section {
-  width: 100%;
   min-height: 100vh;
 }
 
 .home-page .home-section:nth-child(1) {
-  display: grid;
-  place-content: center;
-  background: url("../img/main.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
 
-  & h1 {
-    font-size: clamp(1rem, 14vw, 8rem);
-    font-family: "Josefin Sans", sans-serif;
-    color: var(--text-1);
-    font-weight: 500;
+  .background {
+    height: 80vh;
+    background: url("../img/main.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 -60px 60px -10px var(--section);
+  }
+
+  footer {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 50px;
+
+    h1 {
+      font-size: clamp(0.7rem, 14vw, 4rem);
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 500;
+    }
+
+    .btn-productos {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      padding: 5px 10px;
+
+      border: none;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 500;
+      color: var(--text-3);
+      background-color: var(--background);
+      transition: 0.3s ease-in-out;
+    }
+
+    .btn-productos:hover {
+      transform: scale(102%);
+    }
   }
 }
 
 .home-page .home-section:nth-child(2) {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  text-align: center;
-  gap: 40px;
-  padding: 40px 70px;
+  padding: 0 70px;
+  gap: 50px;
 
-  & h2 {
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--text-3);
+  h2 {
+    text-align: center;
+    font-weight: 500;
+    font-size: 2rem;
+    font-family: "Josefin Sans", sans-serif;
   }
 
-  & .cards-container {
-    margin-top: 30px;
+  .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 80px;
-    height: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 50px;
+    text-align: center;
 
-    & .card {
+    h3 {
+      font-family: "Josefin Sans", sans-serif;
+    }
+
+    .category {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      border-radius: 20px;
-      height: 100%;
-      background: var(--section);
-      color: var(--text-1);
 
-      & img {
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        width: 100%;
-      }
-
-      & section {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-        padding: 30px 15px;
-      }
-
-      & h3 {
-        font-size: 1.8rem;
+      p {
+        padding-top: 20px;
+        font-size: 0.7rem;
+        color: var(--text-2);
       }
     }
   }
 }
 
 .home-page .home-section:nth-child(3) {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 40px;
-  gap: 40px;
-  background: var(--section);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 70px;
+  gap: 20px 70px;
+  border: 1px solid var(--white);
 
-  & h2 {
-    flex: 1;
-    font-size: 5rem;
-    color: var(--text-1);
-    font-family: "Josefin Sans", sans-serif;
+  article {
+    flex: 2;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    text-align: left;
+
+    h2 {
+      font-weight: 500;
+      font-size: 3rem;
+      font-family: "Josefin Sans", sans-serif;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: var(--text-2);
+    }
   }
 
-  & article {
-    flex: 2;
-    background-color: var(--background);
-    border-radius: 20px;
-    padding: 30px;
-    font-size: 1.7rem;
+  .image {
+    flex: 1;
+    width: 100%;
+    background: url("../img/tenis.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page .home-section:nth-child(3) {
+    grid-template-columns: 1fr;
   }
 }

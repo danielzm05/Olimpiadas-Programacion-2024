@@ -7,7 +7,6 @@ export function CreateNewProduct() {
   const [formValues, setFormValues] = useState({
     nombre: "Producto",
     precio: "0000,00",
-    imagen: "https://desierto.co/wp-content/uploads/2022/09/Camiseta-Blanca-1.jpg",
     descripcion: "Coloca una gran descripción",
   });
 
