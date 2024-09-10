@@ -34,6 +34,7 @@ function Cart() {
             <CartProduct
               key={product.id_producto_carrito}
               name={product.Producto.nombre}
+              img={product.Producto.image}
               description={product.Producto.descripcion}
               price={product.Producto.precio}
               cantidad={product.cantidad}

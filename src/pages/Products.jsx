@@ -44,6 +44,7 @@ export function Products() {
           {availableProducts.map((product) => (
             <ProductCard
               key={product.id_producto}
+              img={product.image}
               name={product.nombre}
               description={product.descripcion}
               price={product.precio}

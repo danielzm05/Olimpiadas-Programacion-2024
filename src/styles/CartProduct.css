@@ -1,51 +1,69 @@
 .cart-product {
   min-height: 90px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   width: 100%;
-  flex-direction: column;
+  max-height: 120px;
   gap: 10px;
-  padding: 15px 10px;
+  padding: 15px;
   border-bottom: 1px solid var(--border);
 
-  & span {
+  & .product-img {
+    width: 70px;
+    max-height: 70px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  & .product-info {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    font-size: 0.9rem;
-    font-weight: 600;
+    text-overflow: ellipsis;
 
-    & .price {
-      color: var(--text-3);
-    }
-  }
+    & span {
+      max-height: 21px;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
 
-  & .description {
-    font-size: 0.7rem;
-    color: var(--text-2);
-  }
-
-  & footer {
-    display: flex;
-    justify-content: right;
-    gap: 10px;
-    align-items: center;
-
-    & .quantity {
-      height: 20px;
-      max-width: 80px;
-      border-radius: 5px;
-      display: grid;
-      grid-template-columns: repeat(3, 25px);
-      align-items: center;
-      justify-items: center;
-      border: 1px solid var(--border);
+      & .price {
+        color: var(--text-3);
+      }
     }
 
-    button {
-      cursor: pointer;
-      outline: none;
-      border: none;
-      background: transparent;
+    & .description {
+      font-size: 0.7rem;
       color: var(--text-2);
+    }
+
+    & footer {
+      display: flex;
+      justify-content: right;
+      gap: 10px;
+      align-items: center;
+
+      & .quantity {
+        height: 20px;
+        max-width: 80px;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: repeat(3, 25px);
+        align-items: center;
+        justify-items: center;
+        border: 1px solid var(--border);
+      }
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: transparent;
+        color: var(--text-2);
+      }
     }
   }
 }
