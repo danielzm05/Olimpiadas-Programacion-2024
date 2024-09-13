@@ -23,7 +23,6 @@ export const CarritoProvider = ({ children }) => {
         .order("fecha", { ascending: true });
 
       if (error) throw error;
-      console.log(data);
       setCart(data);
     } else {
       setCart([]);

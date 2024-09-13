@@ -46,7 +46,6 @@ export const ProductsProvider = ({ children }) => {
     if (userId) {
       const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))").eq("id_cliente", userId);
       if (error) throw error;
-      console.log(data);
       setPurchases(data);
     } else {
       setPurchases([]);
@@ -54,7 +53,6 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const makeSale = async (cart, total) => {
-    console.log(cart);
     if (!user) return;
     if (!cart || cart.length === 0) {
       toast.error("El carrito está vacío");

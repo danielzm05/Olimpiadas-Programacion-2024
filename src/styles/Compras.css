@@ -21,3 +21,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .compras-page {
+    padding: 120px 20px 20px 20px;
+  }
+}

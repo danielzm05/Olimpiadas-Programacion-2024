@@ -8,6 +8,7 @@ export function PurchaseCard({ fecha, estado, productos }) {
         <PurchaseProduct
           key={producto.id_venta_producto}
           estado={estado}
+          img={producto.Producto.image}
           nombre={producto.Producto.nombre}
           descripcion={producto.Producto.descripcion}
           cantidad={producto.cantidad}
@@ -17,15 +18,18 @@ export function PurchaseCard({ fecha, estado, productos }) {
   );
 }
 
-export function PurchaseProduct({ estado, nombre, descripcion, cantidad }) {
+export function PurchaseProduct({ estado, img, nombre, descripcion, cantidad }) {
   return (
     <article className="purchase-product">
-      <p className={`estado ${estado ? "entregado" : ""}`}>{estado ? "Entregado" : "En camino"}</p>
-      <h3>{nombre}</h3>
-      <p className="description">{descripcion}</p>
-      <footer>
-        <p>Cantidad: {cantidad}</p>
-      </footer>
+      <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
+      <div className="purchase-info">
+        <p className={`estado ${estado ? "entregado" : ""}`}>{estado ? "Entregado" : "En camino"}</p>
+        <h3>{nombre}</h3>
+        <p className="description">{descripcion}</p>
+        <footer>
+          <p>Cantidad: {cantidad}</p>
+        </footer>
+      </div>
     </article>
   );
 }
