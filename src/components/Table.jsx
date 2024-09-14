@@ -5,7 +5,7 @@ export function Table({ title, children }) {
       <header>
         <h2>{title}</h2>
       </header>
-      <section className="table-content">{children}</section>
+      <table className="table-content">{children}</table>
     </section>
   );
 }

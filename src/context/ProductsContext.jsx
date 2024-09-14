@@ -24,6 +24,26 @@ export const ProductsProvider = ({ children }) => {
     setProducts(data);
   };
 
+  const updateProduct = async (id_producto, updatedProduct) => {
+    const { error } = await supabase
+      .from("Producto")
+      .update({
+        nombre: updatedProduct.nombre,
+        image: updatedProduct.image,
+        precio: updatedProduct.precio,
+        stock: updatedProduct.stock,
+        descripcion: updatedProduct.descripcion,
+      })
+      .eq("id_producto", id_producto);
+
+    if (error) {
+      toast.error("Error al modificar el producto");
+      throw error;
+    }
+    getProducts();
+    toast.success("Producto modificado correctamente");
+  };
+
   const getSales = async () => {
     const { data, error } = await supabase.from("Venta").select("*, Venta_Producto(*, Producto(*))").order("id_venta", { ascending: true });
     if (error) throw error;
@@ -107,10 +127,10 @@ export const ProductsProvider = ({ children }) => {
   const createProduct = async (newProduct) => {
     const { error } = await supabase.from("Producto").insert([
       {
-        id_producto: newProduct.id_producto,
         nombre: newProduct.nombre,
         precio: newProduct.precio,
         stock: newProduct.stock,
+        image: newProduct.image,
         descripcion: newProduct.descripcion,
       },
     ]);
@@ -143,7 +163,7 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ products, sales, updateSale, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale }}
+      value={{ products, sales, updateSale, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale, updateProduct }}
     >
       {children}
     </ProductsContext.Provider>

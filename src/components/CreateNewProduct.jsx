@@ -5,9 +5,11 @@ import { useState } from "react";
 export function CreateNewProduct() {
   const { createProduct } = useProductsContext();
   const [formValues, setFormValues] = useState({
-    nombre: "Producto",
-    precio: "0000,00",
-    descripcion: "Coloca una gran descripción",
+    nombre: "",
+    precio: "",
+    descripcion: "",
+    stock: "",
+    image: "",
   });
 
   const handleInputChange = (e) => {
@@ -20,26 +22,33 @@ export function CreateNewProduct() {
   };
 
   const handleSubmit = async (e) => {
-    createProduct(formValues);
+    e.preventDefault();
+    await createProduct(formValues);
+
+    setFormValues({
+      nombre: "",
+      precio: "",
+      descripcion: "",
+      stock: "",
+      image: "",
+    });
   };
 
   return (
     <section className="new-product">
       <form className="new-product-form" onSubmit={handleSubmit}>
         <h2>Nuevo Producto</h2>
-        <label htmlFor="id_producto">ID Producto</label>
+        <label htmlFor="name">Nombre</label>
         <input
           className="input-data"
-          type="number"
-          id="id_producto"
-          name="id_producto"
-          placeholder="000000"
-          minLength={6}
+          type="text"
+          id="email"
+          name="nombre"
+          placeholder="Nombre"
           required
+          value={formValues.nombre}
           onChange={handleInputChange}
         />
-        <label htmlFor="name">Nombre</label>
-        <input className="input-data" type="text" id="email" name="nombre" placeholder="Nombre" required onChange={handleInputChange} />
         <label htmlFor="precio">Precio</label>
         <input
           className="input-data"
@@ -47,15 +56,36 @@ export function CreateNewProduct() {
           id="precio"
           name="precio"
           placeholder="0000"
-          minLength={8}
+          min={0}
           required
+          value={formValues.precio}
           onChange={handleInputChange}
         />
 
         <label htmlFor="stock">Stock</label>
-        <input className="input-data" type="number" id="stock" name="stock" placeholder="0000" minLength={4} required onChange={handleInputChange} />
+        <input
+          className="input-data"
+          type="number"
+          id="stock"
+          name="stock"
+          placeholder="0000"
+          min={0}
+          required
+          value={formValues.stock}
+          onChange={handleInputChange}
+        />
+        <label htmlFor="image">Url Imagen</label>
+        <input type="text" className="input-data" id="image" name="image" required value={formValues.image} onChange={handleInputChange} />
         <label htmlFor="descripcion">Descripción</label>
-        <input type="text" className="input-data" id="descripcion" name="descripcion" required onChange={handleInputChange}></input>
+        <input
+          type="text"
+          className="input-data"
+          id="descripcion"
+          name="descripcion"
+          required
+          value={formValues.descripcion}
+          onChange={handleInputChange}
+        />
 
         <input type="submit" value="Crear" />
       </form>

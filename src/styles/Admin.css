@@ -1,7 +1,7 @@
 .admin-page {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto repeat(auto-fit, 70vh);
+  grid-template-rows: auto 80vh 70vh;
   gap: 30px 20px;
   padding: 100px 30px;
   background: var(--background-2);
