@@ -19,8 +19,8 @@ function Cart() {
     return total + precio * cantidad;
   }, 0);
 
-  const envio = subtotal * 0.01;
-  const total = subtotal + envio;
+  const envio = Math.trunc(subtotal * 0.02);
+  const total = Math.trunc(subtotal + envio);
 
   return (
     <section className="cart">
@@ -57,7 +57,7 @@ function Cart() {
         </span>
         <span className="cart-info">
           <h3>Envío</h3>
-          <p>${subtotal * 0.01}</p>
+          <p>${envio}</p>
         </span>
         <span className="cart-info total">
           <h3>Total</h3>

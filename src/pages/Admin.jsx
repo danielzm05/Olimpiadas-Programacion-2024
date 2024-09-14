@@ -59,7 +59,7 @@ export function Admin() {
 
         <CreateNewProduct />
 
-        <Table title="Pedido">
+        <Table title="Pedidos">
           <thead>
             <tr className="sale">
               <th>Código</th>
