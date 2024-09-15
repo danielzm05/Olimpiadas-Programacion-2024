@@ -5,9 +5,7 @@ import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
 import { EditProductModal } from "../components/Modals/EditProductModal";
 import { Table } from "../components/Table";
-import { IconTrash } from "@tabler/icons-react";
-import { IconPencil } from "@tabler/icons-react";
-import { IconSquareCheck } from "@tabler/icons-react";
+import { IconLayoutDashboard, IconTrash, IconPencil, IconSquareCheck, IconTruck, IconShirt } from "@tabler/icons-react";
 import "../styles/Admin.css";
 
 export function Admin() {
@@ -26,6 +24,20 @@ export function Admin() {
       <Header dark={true} />
       <main className="admin-page">
         <h2 className="page-title">GESTIONAR TIENDA</h2>
+        <ul className="sections">
+          <li>
+            <IconLayoutDashboard size={15} />
+            Dashboard
+          </li>
+          <li>
+            <IconTruck size={15} />
+            Pedidos
+          </li>
+          <li>
+            <IconShirt size={15} />
+            Productos
+          </li>
+        </ul>
         <Table title="Productos">
           <thead>
             <tr className="product">

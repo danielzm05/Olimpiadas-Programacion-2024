@@ -1,13 +1,7 @@
-import { IconUser } from "@tabler/icons-react";
-import { IconShoppingBag } from "@tabler/icons-react";
-import { IconMenu2 } from "@tabler/icons-react";
-import { IconLogout } from "@tabler/icons-react";
 import { Menu } from "./Menu";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "./Logo";
-import { IconShirt } from "@tabler/icons-react";
-import { IconBuildingStore } from "@tabler/icons-react";
-import { IconShoppingCart } from "@tabler/icons-react";
+import { IconBuildingStore, IconShoppingCart, IconShirt, IconLogout, IconMenu2, IconShoppingBag, IconUser } from "@tabler/icons-react";
 import { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import "../styles/Header.css";

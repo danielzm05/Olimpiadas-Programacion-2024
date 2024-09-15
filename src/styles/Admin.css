@@ -1,7 +1,8 @@
 .admin-page {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto 80vh 70vh;
+  display: flex;
+  /* grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto 80vh 70vh; */
+  flex-direction: column;
   gap: 30px 20px;
   padding: 100px 30px;
   background: var(--background-2);
@@ -12,6 +13,29 @@
     font-size: 3rem;
     font-weight: 400;
     color: var(--text-3);
+  }
+
+  & .sections {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+
+    & li {
+      display: flex;
+      align-items: center;
+      padding: 5px 8px;
+      cursor: pointer;
+      gap: 5px;
+      border-radius: 15px;
+      box-shadow: var(--box-shadow);
+      background: var(--background);
+      color: var(--text-2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    & li:hover {
+      transform: scale(1.05);
+    }
   }
 
   & .products-container {
