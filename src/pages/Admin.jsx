@@ -3,21 +3,46 @@ import { useProductsContext } from "../context/ProductsContext";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
+import { ChartContainer, PieChart, BarChart } from "../components/Charts";
 import { EditProductModal } from "../components/Modals/EditProductModal";
 import { Table } from "../components/Table";
 import { IconLayoutDashboard, IconTrash, IconPencil, IconSquareCheck, IconTruck, IconShirt } from "@tabler/icons-react";
 import "../styles/Admin.css";
 
 export function Admin() {
-  const { products, sales, updateSale, getProducts, deleteProduct, getSales } = useProductsContext();
+  const { products, getProductsStats, productsStats, sales, updateSale, getProducts, deleteProduct, getSales } = useProductsContext();
   const [saleSelected, setSaleSelected] = useState(null);
   const [productSelected, setProductSelected] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     getProducts();
+    getProductsStats();
     getSales();
   }, []);
+
+  const salesData = {
+    labels: ["Entregado", "En Camino"],
+    datasets: [
+      {
+        label: "Pedidos",
+        data: [sales.filter((sale) => sale.entregado).length, sales.filter((sale) => !sale.entregado).length],
+        backgroundColor: ["rgb(16, 190, 65)", "rgb(150, 150, 150)"],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  const topProducts = {
+    labels: productsStats.map((p) => p.nombre).slice(0, 5),
+    datasets: [
+      {
+        label: "Ventas",
+        data: productsStats.map((p) => p.total_vendido).slice(0, 5),
+        backgroundColor: ["#405456"],
+      },
+    ],
+  };
 
   return (
     <>
@@ -38,6 +63,14 @@ export function Admin() {
             Productos
           </li>
         </ul>
+        <ChartContainer>
+          <h2>Pedidos</h2>
+          <PieChart data={salesData} />
+        </ChartContainer>
+        <ChartContainer>
+          <h2>Pedidos</h2>
+          <BarChart data={topProducts} />
+        </ChartContainer>
         <Table title="Productos">
           <thead>
             <tr className="product">

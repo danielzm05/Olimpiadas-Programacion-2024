@@ -7,7 +7,6 @@ export function EditProductModal({ isOpen, onClose, product }) {
   const [updatedProduct, setUpdatedProduct] = useState({});
 
   useEffect(() => {
-    console.log(product);
     setUpdatedProduct({
       nombre: product?.nombre || "",
       precio: product?.precio || "",

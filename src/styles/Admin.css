@@ -1,8 +1,8 @@
 .admin-page {
-  display: flex;
-  /* grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto 80vh 70vh; */
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto 80vh 70vh;
+
   gap: 30px 20px;
   padding: 100px 30px;
   background: var(--background-2);
@@ -16,6 +16,7 @@
   }
 
   & .sections {
+    grid-column: 1/-1;
     display: flex;
     gap: 10px;
     list-style: none;
@@ -47,6 +48,16 @@
     .product-card:hover {
       box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
+  }
+
+  & .chart-container {
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    background: var(--background);
+    padding: 15px 10px 80px 10px;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
   }
 }
 

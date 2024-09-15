@@ -12,6 +12,7 @@ export const useProductsContext = () => {
 
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [productsStats, setProductsStats] = useState([]);
   const [sales, setSales] = useState([]);
   const [purchases, setPurchases] = useState([]);
   const { user } = useAuthContext();
@@ -109,6 +110,12 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  const getProductsStats = async () => {
+    const { data, error } = await supabase.rpc("top_productos");
+    if (error) throw error;
+    setProductsStats(data);
+  };
+
   const createSaleDetail = async (id_venta, id_producto, cantidad, subtotal) => {
     const { error } = await supabase.from("Venta_Producto").insert([
       {
@@ -163,7 +170,21 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ products, sales, updateSale, purchases, getPurchases, getProducts, createProduct, deleteProduct, getSales, makeSale, updateProduct }}
+      value={{
+        products,
+        sales,
+        updateSale,
+        purchases,
+        getPurchases,
+        getProducts,
+        createProduct,
+        deleteProduct,
+        getSales,
+        makeSale,
+        updateProduct,
+        getProductsStats,
+        productsStats,
+      }}
     >
       {children}
     </ProductsContext.Provider>
