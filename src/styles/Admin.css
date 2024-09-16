@@ -76,7 +76,7 @@
     .admin-section.sales,
     .admin-section.products {
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(auto-fit, 80vh);
+      grid-template-rows: repeat(auto-fit, minmax(80vh, auto));
     }
 
     .admin-section.sales .table:nth-child(1) {
