@@ -4,16 +4,15 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
 import { ChartContainer, PieChart, BarChart } from "../components/Charts";
-import { EditProductModal } from "../components/Modals/EditProductModal";
-import { Table } from "../components/Table";
-import { IconLayoutDashboard, IconTrash, IconPencil, IconSquareCheck, IconTruck, IconShirt } from "@tabler/icons-react";
+import { SaleDetailsTable } from "../components/Tables/SaleDetailsTable";
+import { ProductsTable } from "../components/Tables/ProductsTable";
+import { SalesTable } from "../components/Tables/SalesTable";
+import { IconTruck, IconShirt } from "@tabler/icons-react";
 import "../styles/Admin.css";
 
 export function Admin() {
-  const { products, getProductsStats, productsStats, sales, updateSale, getProducts, deleteProduct, getSales } = useProductsContext();
+  const { products, getProductsStats, productsStats, sales, updateSale, getProducts, getSales } = useProductsContext();
   const [saleSelected, setSaleSelected] = useState(null);
-  const [productSelected, setProductSelected] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     getProducts();
@@ -48,115 +47,45 @@ export function Admin() {
     <>
       <Header dark={true} />
       <main className="admin-page">
-        <h2 className="page-title">GESTIONAR TIENDA</h2>
         <ul className="sections">
           <li>
-            <IconLayoutDashboard size={15} />
-            Dashboard
+            <a href="#Sales">
+              <IconTruck size={15} />
+              Pedidos
+            </a>
           </li>
           <li>
-            <IconTruck size={15} />
-            Pedidos
-          </li>
-          <li>
-            <IconShirt size={15} />
-            Productos
+            <a href="#Products">
+              <IconShirt size={15} />
+              Productos
+            </a>
           </li>
         </ul>
-        <ChartContainer>
-          <h2>Pedidos</h2>
-          <PieChart data={salesData} />
-        </ChartContainer>
-        <ChartContainer>
-          <h2>Pedidos</h2>
-          <BarChart data={topProducts} />
-        </ChartContainer>
-        <Table title="Productos">
-          <thead>
-            <tr className="product">
-              <th>Código</th>
-              <th>Imagen</th>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Stock</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr className="product" key={product.id_producto} onClick={() => setProductSelected(product)}>
-                <td>{`#${product.id_producto}`}</td>
-                <td>
-                  <img src={product.image} alt={product.nombre} />
-                </td>
-                <td>{product.nombre}</td>
-                <td>{`$${product.precio}`}</td>
-                <td>{product.stock}</td>
-                <td onClick={() => setOpenModal(true)}>
-                  <IconPencil size={15} />
-                </td>
-                <td>
-                  <IconTrash size={15} onClick={() => deleteProduct(product.id_producto)} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
 
-        <CreateNewProduct />
+        <h2 id="Pedidos" className="page-title">
+          Pedidos
+        </h2>
+        <section className="admin-section sales">
+          <SalesTable sales={sales} saleSelected={(sale) => setSaleSelected(sale)} updateSale={(id_venta) => updateSale(id_venta)} />
+          <SaleDetailsTable saleSelected={saleSelected} />
+          <ChartContainer>
+            <h2>Estado Pedidos</h2>
+            <PieChart data={salesData} />
+          </ChartContainer>
+        </section>
 
-        <Table title="Pedidos">
-          <thead>
-            <tr className="sale">
-              <th>Código</th>
-              <th>Fecha</th>
-              <th>Hora</th>
-              <th>Total</th>
-              <th>Estado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sales.map((sale) => (
-              <tr className="sale" key={sale.id_venta} onClick={() => setSaleSelected(sale)}>
-                <td>{`#${sale.id_venta}`}</td>
-                <td>{sale.fecha.slice(0, 10)}</td>
-                <td>{sale.fecha.slice(11, 16)}</td>
-                <td>{`$${sale.total}`}</td>
-                <td className={`estado ${sale.entregado ? "entregado" : ""}`}>{sale.entregado ? "Entregado" : "Pendiente"}</td>
-                <td>{!sale.entregado && <IconSquareCheck size={15} onClick={() => updateSale(sale.id_venta)} />}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-
-        <Table title={`Detalles de Pedido #${saleSelected ? saleSelected.id_venta : ""}`}>
-          <thead>
-            <tr className="sale_detail">
-              <th>Cód</th>
-              <th>Producto</th>
-              <th>Precio</th>
-              <th>Cant</th>
-              <th>
-                <b>Subtotal</b>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {saleSelected &&
-              saleSelected.Venta_Producto.map((product) => (
-                <tr className="sale_detail" key={product.Producto.id_producto}>
-                  <td>{`#${product.Producto.id_producto}`}</td>
-                  <td>{product.Producto.nombre}</td>
-                  <td>{`$${product.subtotal / product.cantidad}`}</td>
-                  <td>{product.cantidad}</td>
-                  <td>
-                    <b>{`$${product.subtotal}`}</b>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
+        <h2 id="Products" className="page-title">
+          Productos
+        </h2>
+        <section className="admin-section products">
+          <CreateNewProduct />
+          <ChartContainer>
+            <h2>Productos más vendidos</h2>
+            <BarChart data={topProducts} />
+          </ChartContainer>
+          <ProductsTable products={products} />
+        </section>
       </main>
-      <EditProductModal isOpen={openModal} onClose={() => setOpenModal(false)} product={productSelected} />
       <Footer />
     </>
   );

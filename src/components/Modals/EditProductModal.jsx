@@ -24,7 +24,9 @@ export function EditProductModal({ isOpen, onClose, product }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateProduct(product.id_producto, updatedProduct);
+    onClose();
   };
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <h2>Modificar Producto</h2>
@@ -39,7 +41,7 @@ export function EditProductModal({ isOpen, onClose, product }) {
           id="precio"
           name="precio"
           min={0}
-          minLength={8}
+          maxLength={8}
           required
           onChange={handleChange}
         />
@@ -52,7 +54,7 @@ export function EditProductModal({ isOpen, onClose, product }) {
           id="stock"
           name="stock"
           min={0}
-          minLength={4}
+          maxLength={6}
           required
           onChange={handleChange}
         />

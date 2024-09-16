@@ -1,6 +1,8 @@
 .new-product {
-  max-width: 650px;
   display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
   justify-content: center;
   box-shadow: var(--box-shadow);
   border-radius: 10px;
@@ -10,6 +12,7 @@
 
 .new-product-form {
   width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
 

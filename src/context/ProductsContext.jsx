@@ -42,6 +42,7 @@ export const ProductsProvider = ({ children }) => {
       throw error;
     }
     getProducts();
+    getProductsStats();
     toast.success("Producto modificado correctamente");
   };
 

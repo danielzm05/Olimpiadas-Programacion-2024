@@ -1,32 +1,22 @@
 .admin-page {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto 80vh 70vh;
-
+  display: flex;
+  flex-direction: column;
   gap: 30px 20px;
   padding: 100px 30px;
   background: var(--background-2);
 
-  & .page-title {
-    grid-column: 1/-1;
-    text-align: left;
-    font-size: 3rem;
-    font-weight: 400;
-    color: var(--text-3);
-  }
-
   & .sections {
-    grid-column: 1/-1;
     display: flex;
     gap: 10px;
     list-style: none;
 
-    & li {
+    & li a {
       display: flex;
       align-items: center;
       padding: 5px 8px;
       cursor: pointer;
       gap: 5px;
+      text-decoration: none;
       border-radius: 15px;
       box-shadow: var(--box-shadow);
       background: var(--background);
@@ -39,14 +29,35 @@
     }
   }
 
-  & .products-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 250px);
-    gap: 30px;
-    justify-content: left;
+  & .page-title {
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 100;
+    color: var(--text-3);
+  }
 
-    .product-card:hover {
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  & .admin-section {
+    display: grid;
+    gap: 30px 20px;
+  }
+
+  & .admin-section.sales {
+    min-height: 90vh;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 40vh 45vh;
+
+    .table:nth-child(1) {
+      grid-row: 1/-1;
+    }
+  }
+
+  & .admin-section.products {
+    min-height: 120vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 500px 100vh;
+
+    section:nth-child(3) {
+      grid-column: 1/-1;
     }
   }
 
@@ -54,15 +65,22 @@
     width: 100%;
     max-width: 100vw;
     height: 100%;
+    max-height: 100vh;
     background: var(--background);
     padding: 15px 10px 80px 10px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
   }
-}
 
-@media (max-width: 768px) {
-  .admin-page {
-    grid-template-columns: 1fr;
+  @media (max-width: 1040px) {
+    .admin-section.sales,
+    .admin-section.products {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(auto-fit, 80vh);
+    }
+
+    .admin-section.sales .table:nth-child(1) {
+      grid-row: auto;
+    }
   }
 }

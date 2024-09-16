@@ -1,4 +1,5 @@
 import { useProductsContext } from "../context/ProductsContext";
+import { ProductCard } from "./ProductCard";
 import "../styles/CreateNewProduct.css";
 import { useState } from "react";
 
@@ -56,7 +57,8 @@ export function CreateNewProduct() {
           id="precio"
           name="precio"
           placeholder="0000"
-          min={0}
+          min="1"
+          max="99999999"
           required
           value={formValues.precio}
           onChange={handleInputChange}
@@ -69,7 +71,8 @@ export function CreateNewProduct() {
           id="stock"
           name="stock"
           placeholder="0000"
-          min={0}
+          min="0"
+          max="999999"
           required
           value={formValues.stock}
           onChange={handleInputChange}
@@ -89,6 +92,8 @@ export function CreateNewProduct() {
 
         <input type="submit" value="Crear" />
       </form>
+
+      <ProductCard name={formValues.nombre} img={formValues.img} price={formValues.precio} description={formValues.descripcion} />
     </section>
   );
 }

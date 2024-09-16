@@ -9,7 +9,7 @@ export function PieChart({ data }) {
   const options = {
     maintainAspectRatio: false,
     responsive: true,
-    cutout: 100,
+    cutout: 60,
   };
 
   return <Doughnut data={data} options={options} />;

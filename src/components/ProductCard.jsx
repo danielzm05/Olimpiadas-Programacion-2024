@@ -1,15 +1,9 @@
 import { IconPlus } from "@tabler/icons-react";
-import { IconX } from "@tabler/icons-react";
 import "../styles/ProductCard.css";
 
-export function ProductCard({ name, img, description, price, addToCart, edit = false, remove }) {
+export function ProductCard({ name, img, description, price, addToCart }) {
   return (
     <article className="product-card">
-      {edit && (
-        <div onClick={remove} className="btn-delete">
-          <IconX size={18} />
-        </div>
-      )}
       <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
       <section>
         <h3>{name}</h3>
