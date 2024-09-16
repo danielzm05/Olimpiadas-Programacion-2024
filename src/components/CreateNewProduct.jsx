@@ -93,7 +93,7 @@ export function CreateNewProduct() {
         <input type="submit" value="Crear" />
       </form>
 
-      <ProductCard name={formValues.nombre} img={formValues.img} price={formValues.precio} description={formValues.descripcion} />
+      <ProductCard name={formValues.nombre} img={formValues.image} price={formValues.precio} description={formValues.descripcion} />
     </section>
   );
 }
