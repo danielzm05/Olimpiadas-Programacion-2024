@@ -9,6 +9,7 @@
   font-size: 2vh;
   padding: 0 20px;
   height: 10vh;
+  color: var(--text-1);
   fill: var(--text-1);
   background: transparent;
 }
@@ -34,26 +35,17 @@
 }
 
 .main-header .burger-container {
-  display: flex;
-  flex-grow: 1;
-  flex-basis: 0;
-
-  & svg {
-    cursor: pointer;
-  }
-}
-
-.main-header .logo {
-  width: 80px;
-  height: 80px;
   cursor: pointer;
 }
 
-.main-header nav {
-  display: flex;
-  flex-grow: 1;
-  flex-basis: 0;
-  justify-content: end;
+.main-header .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
 }
 
 .main-header ul {
@@ -72,5 +64,11 @@
 
   a:hover {
     color: var(--hover);
+  }
+}
+
+@media (max-width: 550px) {
+  .main-header nav {
+    display: none;
   }
 }
