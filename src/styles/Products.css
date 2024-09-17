@@ -42,10 +42,11 @@
     display: grid;
     padding: 50px 20px;
     justify-content: start;
+    justify-items: center;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    grid-template-columns: repeat(auto-fit, 200px);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px 15px;
     background: var(--background-2);
 
     & .error-message {

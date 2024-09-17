@@ -7,7 +7,9 @@ export function CartProduct({ name, img, description, cantidad, price, remove, i
       <div className="product-img" style={{ backgroundImage: `url(${img})` }}></div>
       <section className="product-info">
         <span>
-          <h3 className="name">{name}</h3>
+          <h3 className="name" title={name}>
+            {name}
+          </h3>
           <p className="price">${price * cantidad}</p>
         </span>
         <p className="description">{description}</p>
