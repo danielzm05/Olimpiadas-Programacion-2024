@@ -28,16 +28,6 @@
     color: var(--text-1);
   }
 
-  & .logo {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    fill: var(--text-1);
-  }
-
   & h1 {
     font-size: 2rem;
     font-family: "Josefin Sans", sans-serif;

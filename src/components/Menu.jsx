@@ -1,7 +1,6 @@
 import "../styles/Menu.css";
 import { IconX } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import { Logo } from "./Logo";
 import { useAuthContext } from "../context/AuthContext";
 
 export function Menu({ isClose }) {
@@ -9,9 +8,6 @@ export function Menu({ isClose }) {
   const { user, userInfo, logOut } = useAuthContext();
   return (
     <section className="menu-modal">
-      <div onClick={() => navigate("/")} className="logo-container">
-        <Logo />
-      </div>
       <button className="close-btn" onClick={isClose}>
         <IconX size={25} />
       </button>

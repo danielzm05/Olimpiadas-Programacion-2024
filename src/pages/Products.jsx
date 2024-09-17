@@ -4,7 +4,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { ProductCard } from "../components/ProductCard";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import "../styles/Products.css";
 
@@ -12,6 +12,7 @@ export function Products() {
   const { products, getProducts } = useProductsContext();
   const { user } = useAuthContext();
   const { cart, addProduct, updateQuantity } = useCarritoContext();
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     getProducts();
@@ -34,23 +35,31 @@ export function Products() {
   };
 
   const availableProducts = products.filter((product) => product.stock > 0);
+  let filteredProducts = availableProducts.filter((p) => p.nombre.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <>
-      <Header dark={true} />
+      <Header />
       <main className="products-page">
-        <h2>NUESTROS PRODUCTOS</h2>
+        <div className="background">
+          <h1>Productos</h1>
+          <input className="search-bar" type="text" placeholder="Buscar..." onChange={(e) => setSearchTerm(e.target.value)} />
+        </div>
         <div className="products-container">
-          {availableProducts.map((product) => (
-            <ProductCard
-              key={product.id_producto}
-              img={product.image}
-              name={product.nombre}
-              description={product.descripcion}
-              price={product.precio}
-              addToCart={() => addProductToCart(product)}
-            />
-          ))}
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id_producto}
+                img={product.image}
+                name={product.nombre}
+                description={product.descripcion}
+                price={product.precio}
+                addToCart={() => addProductToCart(product)}
+              />
+            ))
+          ) : (
+            <p className="error-message">No encontramos el producto que buscabas</p>
+          )}
         </div>
       </main>
       <Footer />

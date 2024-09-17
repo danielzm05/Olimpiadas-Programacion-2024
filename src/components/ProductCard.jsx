@@ -13,7 +13,6 @@ export function ProductCard({ name, img, description, price, addToCart }) {
         <p className="product-price">${price}</p>
         <button className="btn-add" onClick={addToCart}>
           <IconPlus size={18} />
-          Agregar
         </button>
       </footer>
     </article>
